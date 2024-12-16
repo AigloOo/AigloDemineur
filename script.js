@@ -69,7 +69,9 @@ class Demineur {
     this.resetGame();
 
     let settings;
-    if (this.difficultySelect.value === "custom") {
+    const selectedMode = this.difficultySelect.value;
+
+    if (selectedMode === "custom") {
       const width = parseInt(document.querySelector("#customWidth").value);
       const height = parseInt(document.querySelector("#customHeight").value);
       const mines = parseInt(document.querySelector("#customMines").value);
@@ -88,12 +90,13 @@ class Demineur {
       }
 
       settings = { width, height, mines };
-    } else if (this.difficultySelect.value.startsWith("ia-")) {
-      const difficulty = this.difficultySelect.value.replace("ia-", "");
+      this.isAIMode = false;
+    } else if (selectedMode.startsWith("ia-")) {
+      const difficulty = selectedMode.replace("ia-", "");
       settings = this.difficultySettings[difficulty];
       this.isAIMode = true;
     } else {
-      settings = this.difficultySettings[this.difficultySelect.value];
+      settings = this.difficultySettings[selectedMode];
       this.isAIMode = false;
     }
 
