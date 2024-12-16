@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Démineur Rétro</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="gameContainer">
+      <div class="header">
+        <h1>Démineur</h1>
+        <div class="controls">
+          <select id="difficultySelect">
+            <option value="facile">Facile</option>
+            <option value="moyen">Moyen</option>
+            <option value="difficile">Difficile</option>
+            <option value="custom">Personnalisé</option>
+            <option value="ia-facile">IA Facile</option>
+            <option value="ia-moyen">IA Moyen</option>
+            <option value="ia-difficile">IA Difficile</option>
+          </select>
+          <div id="customControls">
+            <input
+              type="number"
+              id="customWidth"
+              placeholder="Largeur"
+              min="5"
+              max="30"
+            />
+            <input
+              type="number"
+              id="customHeight"
+              placeholder="Hauteur"
+              min="5"
+              max="30"
+            />
+            <input
+              type="number"
+              id="customMines"
+              placeholder="Bombes"
+              min="1"
+            />
+          </div>
+          <button id="startGame">Nouvelle Partie</button>
+        </div>
+        <div class="gameInfo">
+          <span id="mineCount">💣 0</span>
+          <span id="timer">⏱️ 0</span>
+          <button id="flagMode" class="flagModeBtn">🚩 Mode drapeau</button>
+          <button id="resetGame" class="resetBtn">🔄 Recommencer</button>
+        </div>
+      </div>
+      <div id="gameBoard"></div>
+      <div class="legend">
+        <div class="legendTitle">Légende</div>
+        <div class="legendGrid">
+          <div class="legendItem">
+            <div class="legendCell">?</div>
+            <span>Case non révélée</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell flagged">🚩</div>
+            <span>Drapeau</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell mine">💣</div>
+            <span>Mine</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell revealed" data-mines="1">1</div>
+            <span>Nombre de mines adjacentes</span>
+          </div>
+        </div>
+      </div>
+      <div id="gameStats" class="statsContainer">
+        <h2>Statistiques</h2>
+        <div class="statsGrid"></div>
+      </div>
+      <p class="footer">
+        by
+        <a href="https://jean-winter.fr/liens" target="_blank">Aiglo</a>
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="stats.js"></script>
+  </body>
+</html>
