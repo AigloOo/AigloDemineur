@@ -53,23 +53,124 @@
       </div>
       <div id="gameBoard"></div>
       <div class="legend">
-        <div class="legendTitle">Légende</div>
+        <div class="legendTitle">Guide du Démineur</div>
         <div class="legendGrid">
           <div class="legendItem">
-            <div class="legendCell">?</div>
-            <span>Case non révélée</span>
+            <div class="legendCell"></div>
+            <span>Case non révélée - À explorer</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell revealed"></div>
+            <span>Case vide - Zone sûre (0 mine)</span>
           </div>
           <div class="legendItem">
             <div class="legendCell flagged">🚩</div>
-            <span>Drapeau</span>
+            <span>Drapeau - Mine présumée</span>
           </div>
           <div class="legendItem">
             <div class="legendCell mine">💣</div>
-            <span>Mine</span>
+            <span>Mine - Game Over!</span>
           </div>
           <div class="legendItem">
             <div class="legendCell revealed" data-mines="1">1</div>
-            <span>Nombre de mines adjacentes</span>
+            <span>1 mine dans les cases adjacentes</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell revealed" data-mines="2">2</div>
+            <span>2 mines dans les cases adjacentes</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell revealed" data-mines="3">3</div>
+            <span>3 mines dans les cases adjacentes</span>
+          </div>
+          <div class="legendItem">
+            <div class="legendCell revealed" data-mines="4">4</div>
+            <span>4 mines dans les cases adjacentes</span>
+          </div>
+        </div>
+
+        <div class="tutorialSection">
+          <h3>Comment jouer au Démineur ?</h3>
+          <div class="tutorialSteps">
+            <div class="tutorialCard">
+              <div class="stepHeader">
+                <div class="stepBadge">1</div>
+                <h4>Premier Clic</h4>
+              </div>
+              <div class="stepContent">
+                <div class="stepIcon">🎯</div>
+                <p>
+                  Cliquez sur n'importe quelle case pour commencer. Le premier
+                  clic est toujours sûr !
+                </p>
+              </div>
+            </div>
+
+            <div class="tutorialCard">
+              <div class="stepHeader">
+                <div class="stepBadge">2</div>
+                <h4>Comprendre les Chiffres</h4>
+              </div>
+              <div class="stepContent">
+                <div class="stepIcon">🔢</div>
+                <p>
+                  Les chiffres révélés indiquent le nombre de mines dans les 8
+                  cases adjacentes
+                </p>
+              </div>
+            </div>
+
+            <div class="tutorialCard">
+              <div class="stepHeader">
+                <div class="stepBadge">3</div>
+                <h4>Marquer les Mines</h4>
+              </div>
+              <div class="stepContent">
+                <div class="stepIcon">🚩</div>
+                <p>
+                  Utilisez le clic droit ou le bouton drapeau pour marquer les
+                  mines présumées
+                </p>
+              </div>
+            </div>
+
+            <div class="tutorialCard">
+              <div class="stepHeader">
+                <div class="stepBadge">4</div>
+                <h4>Gagner la Partie</h4>
+              </div>
+              <div class="stepContent">
+                <div class="stepIcon">🏆</div>
+                <p>
+                  Révélez toutes les cases sans mines pour remporter la victoire
+                  !
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="strategySection">
+            <h4>Stratégies Avancées</h4>
+            <div class="strategyGrid">
+              <div class="strategyCard">
+                <span class="strategyIcon">💡</span>
+                <p>Commencez par les coins et les bords</p>
+              </div>
+              <div class="strategyCard">
+                <span class="strategyIcon">🎯</span>
+                <p>Marquez les mines certaines avec des drapeaux</p>
+              </div>
+              <div class="strategyCard">
+                <span class="strategyIcon">🧮</span>
+                <p>
+                  Un chiffre égal aux cases non révélées = toutes sont des mines
+                </p>
+              </div>
+              <div class="strategyCard">
+                <span class="strategyIcon">⏱️</span>
+                <p>Prenez votre temps en mode difficile</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

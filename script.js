@@ -1,5 +1,6 @@
 class Demineur {
   constructor() {
+    this.loadUserPreferences();
     this.difficultySettings = {
       facile: { width: 8, height: 8, mines: 10 },
       moyen: { width: 16, height: 16, mines: 40 },
@@ -14,6 +15,9 @@ class Demineur {
     this.timerDisplay = document.querySelector("#timer");
     this.flagModeBtn = document.querySelector("#flagMode");
     this.resetBtn = document.querySelector("#resetGame");
+
+    this.gameStats = new GameStats();
+    this.gameStats.updateStatsDisplay();
 
     this.board = [];
     this.mineCount = 0;
@@ -36,6 +40,27 @@ class Demineur {
         window.showMines = () => this.debugShowMines();
       }
     });
+  }
+
+  loadUserPreferences() {
+    const preferences = localStorage.getItem("demineurPreferences");
+    if (preferences) {
+      const saved = JSON.parse(preferences);
+      this.difficultySelect.value = saved.difficulty || "facile";
+      this.flagMode = saved.flagMode || false;
+      if (saved.flagMode) this.flagModeBtn.classList.add("active");
+    }
+  }
+
+  saveUserPreferences() {
+    const preferences = {
+      difficulty: this.difficultySelect.value,
+      flagMode: this.flagMode,
+      lastWidth: this.game?.width,
+      lastHeight: this.game?.height,
+      lastMines: this.game?.mines,
+    };
+    localStorage.setItem("demineurPreferences", JSON.stringify(preferences));
   }
 
   initializeEventListeners() {
@@ -324,6 +349,10 @@ class Demineur {
 
     clearInterval(this.timerInterval);
     this.gameStarted = false;
+
+    const difficulty = this.difficultySelect.value.replace("ia-", "");
+    this.gameStats.updateGameStats(difficulty, this.timer, won);
+    this.gameStats.updateStatsDisplay();
 
     const cells = this.gameBoard.querySelectorAll(".cell");
     cells.forEach((cell) => {

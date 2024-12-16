@@ -21,7 +21,7 @@ body {
         flex-direction: column;
         align-items: center;
         width: 90%;
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
 
         .header {
@@ -263,37 +263,177 @@ body {
         .legend {
             width: 100%;
             max-width: 800px;
-            margin: 20px auto 0;
-            padding: 15px;
+            margin: 30px auto 0;
+            padding: 25px;
             background: #f8f9fa;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
             .legendTitle {
-                font-weight: bold;
-                margin-bottom: 10px;
+                font-size: 1.4em;
+                font-weight: 700;
+                color: #6c5ce7;
+                margin-bottom: 20px;
                 text-align: center;
             }
 
             .legendGrid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 10px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+                margin-bottom: 30px;
 
                 .legendItem {
                     display: flex;
                     align-items: center;
-                    gap: 8px;
-                    padding: 5px;
+                    gap: 12px;
+                    padding: 10px;
+                    background: rgba(255, 255, 255, 0.8);
+                    border-radius: 12px;
+                    transition: transform 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        background: rgba(255, 255, 255, 0.95);
+                    }
 
                     .legendCell {
-                        width: 30px;
-                        height: 30px;
+                        width: 35px;
+                        height: 35px;
                         border-radius: 8px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        font-size: 0.9em;
+                        font-size: 1.1em;
+                        font-weight: bold;
+                        border: 2px solid #e9ecef;
+                    }
+
+                    span {
+                        font-size: 0.95em;
+                        color: #2d3436;
+                    }
+                }
+            }
+
+            .tutorialSection {
+                background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0.05) 100%);
+                padding: 30px;
+                border-radius: 24px;
+                margin-top: 40px;
+                box-shadow: 0 4px 20px rgba(108, 92, 231, 0.1);
+
+                h3 {
+                    color: #6c5ce7;
+                    font-size: 1.6em;
+                    text-align: center;
+                    margin-bottom: 30px;
+                    font-weight: 700;
+                }
+
+                .tutorialSteps {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 20px;
+                    margin-bottom: 30px;
+                }
+
+                .tutorialCard {
+                    background: white;
+                    border-radius: 16px;
+                    padding: 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                    transition: transform 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                    }
+
+                    .stepHeader {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        margin-bottom: 15px;
+
+                        .stepBadge {
+                            background: #6c5ce7;
+                            color: white;
+                            width: 28px;
+                            height: 28px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-weight: bold;
+                            font-size: 1.1em;
+                        }
+
+                        h4 {
+                            color: #2d3436;
+                            font-size: 1.2em;
+                            margin: 0;
+                        }
+                    }
+
+                    .stepContent {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 15px;
+
+                        .stepIcon {
+                            font-size: 1.8em;
+                            line-height: 1;
+                        }
+
+                        p {
+                            margin: 0;
+                            line-height: 1.5;
+                            color: #4a4a4a;
+                        }
+                    }
+                }
+
+                .strategySection {
+                    margin-top: 40px;
+                    padding-top: 30px;
+                    border-top: 2px solid rgba(108, 92, 231, 0.2);
+
+                    h4 {
+                        color: #6c5ce7;
+                        font-size: 1.3em;
+                        text-align: center;
+                        margin-bottom: 25px;
+                    }
+
+                    .strategyGrid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 15px;
+                    }
+
+                    .strategyCard {
+                        background: white;
+                        padding: 15px;
+                        border-radius: 12px;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                        transition: transform 0.2s ease;
+
+                        &:hover {
+                            transform: translateY(-3px);
+                        }
+
+                        .strategyIcon {
+                            font-size: 1.5em;
+                        }
+
+                        p {
+                            margin: 0;
+                            font-size: 0.95em;
+                            color: #4a4a4a;
+                        }
                     }
                 }
             }
@@ -330,48 +470,180 @@ body {
 }
 
 .statsContainer {
-    margin-top: 30px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1400px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 24px;
+    box-shadow:
+        0 10px 30px rgba(108, 92, 231, 0.1),
+        0 1px 5px rgba(108, 92, 231, 0.05);
 
     h2 {
         text-align: center;
-        color: #2d3436;
-        margin-bottom: 20px;
+        color: #6c5ce7;
+        font-size: 2em;
+        margin-bottom: 30px;
+        font-weight: 800;
+        background: linear-gradient(45deg, #6c5ce7 0%, #a8a4e6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .statsGrid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 20px;
+        width: 100%;
+
+        .statBox {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+
+            &.achievements {
+                grid-column: 1 / -1;
+                margin-top: 20px;
+            }
+
+            h3 {
+                color: #6c5ce7;
+                margin-bottom: 20px;
+                font-size: 1.3em;
+                text-align: center;
+                font-weight: 700;
+                padding-bottom: 15px;
+                border-bottom: 2px solid rgba(108, 92, 231, 0.1);
+            }
+
+            p {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px;
+                border-radius: 12px;
+                background: rgba(248, 249, 250, 0.7);
+                margin: 8px 0;
+                transition: all 0.2s ease;
+                font-size: 1.05em;
+                color: #4a4a4a;
+
+                &:hover {
+                    transform: translateX(8px);
+                    background: rgba(108, 92, 231, 0.1);
+                    color: #6c5ce7;
+                }
+            }
+
+            &.achievements {
+                min-height: auto;
+
+                .achievementsGrid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 15px;
+
+                    .achievementItem {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 15px;
+                        border-radius: 12px;
+                        background: rgba(248, 249, 250, 0.7);
+                        transition: all 0.2s ease;
+
+                        &.unlocked {
+                            background: rgba(108, 92, 231, 0.1);
+
+                            .achievementIcon {
+                                color: #6c5ce7;
+                            }
+                        }
+
+                        &.locked {
+                            opacity: 0.6;
+                        }
+
+                        &:hover {
+                            transform: translateX(5px);
+                        }
+
+                        .achievementIcon {
+                            font-size: 1.5em;
+                        }
+
+                        .achievementDetails {
+                            h4 {
+                                margin: 0;
+                                font-size: 1.1em;
+                                color: #2d3436;
+                            }
+
+                            p {
+                                margin: 5px 0 0;
+                                font-size: 0.9em;
+                                color: #636e72;
+                                padding: 0;
+                                background: none;
+
+                                &:hover {
+                                    transform: none;
+                                    background: none;
+                                    color: inherit;
+                                }
+                            }
+
+                            .unlockDate {
+                                font-size: 0.8em;
+                                color: #6c5ce7;
+                                margin-top: 5px;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .statsContainer .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .statsContainer {
         padding: 15px;
-    }
 
-    .statBox {
-        background: #f8f9fa;
+        .statsGrid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 10px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .gameContainer {
         padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease;
+        width: 98%;
     }
 
-    .statBox:hover {
-        transform: translateY(-2px);
-    }
+    .statsContainer {
+        padding: 10px;
 
-    .statBox h3 {
-        color: #6c5ce7;
-        margin-bottom: 15px;
-        font-size: 1.2em;
-        text-align: center;
-    }
-
-    .statBox p {
-        margin: 8px 0;
-        color: #2d3436;
-        font-size: 0.95em;
+        .statsGrid {
+            gap: 10px;
+            padding: 5px;
+        }
     }
 }
 
@@ -509,6 +781,30 @@ body {
             grid-template-columns: 1fr;
         }
     }
+
+    .legend {
+        padding: 15px;
+
+        .legendGrid {
+            grid-template-columns: 1fr;
+        }
+
+        .tutorialSection {
+            padding: 20px;
+
+            .tutorialSteps {
+                grid-template-columns: 1fr;
+            }
+
+            .strategyGrid {
+                grid-template-columns: 1fr;
+            }
+
+            .tutorialCard {
+                padding: 15px;
+            }
+        }
+    }
 }
 
 @media (max-width: 480px) {
@@ -540,5 +836,69 @@ body {
                 }
             }
         }
+    }
+}
+
+.achievementPopup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a8a4e6 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow:
+        0 10px 30px rgba(108, 92, 231, 0.2),
+        0 1px 5px rgba(108, 92, 231, 0.1);
+    transform: translateX(120%);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1000;
+    max-width: 400px;
+
+    &.show {
+        transform: translateX(0);
+    }
+
+    .achievementIcon {
+        font-size: 2.5em;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .achievementInfo {
+        h3 {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 5px 0 0;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+    }
+
+    &.secret {
+        background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+        border: 2px solid #a8a4e6;
+
+        .achievementIcon {
+            background: rgba(108, 92, 231, 0.2);
+        }
+    }
+}
+
+@keyframes achievementShine {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
     }
 }
