@@ -27,6 +27,15 @@ class Demineur {
 
     this.initializeEventListeners();
     this.startNewGame();
+
+    window.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "D") {
+        console.log(
+          "Mode debug activé - Tapez showMines() pour voir les bombes"
+        );
+        window.showMines = () => this.debugShowMines();
+      }
+    });
   }
 
   initializeEventListeners() {
@@ -366,6 +375,27 @@ class Demineur {
     this.timer = 0;
     this.timerDisplay.textContent = `⏱️ ${this.timer}`;
     this.gameStarted = false;
+  }
+
+  debugShowMines() {
+    if (!this.gameStarted) {
+      console.log("La partie n'a pas encore commencé");
+      return;
+    }
+
+    const mineMap = [];
+
+    for (let y = 0; y < this.height; y++) {
+      let row = "";
+      for (let x = 0; x < this.width; x++) {
+        row += this.board[y][x].isMine ? "💣" : "⬜";
+      }
+      mineMap.push(row);
+    }
+
+    console.log("Carte des mines :");
+    console.log(mineMap.join("\n"));
+    console.log("🔍 Les bombes sont représentées par 💣");
   }
 }
 
