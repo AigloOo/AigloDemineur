@@ -1,4 +1,4 @@
-````markdown
+
 
 # Démineur de Aiglo (Minesweeper)
 
@@ -68,7 +68,6 @@ Un jeu de démineur moderne et interactif développé en JavaScript vanilla avec
 ```bash
 git clone https://github.com/Aiglooo/AigloDemineur.git
 ```
-````
 
 2. Ouvrez `index.html` dans votre navigateur
 
