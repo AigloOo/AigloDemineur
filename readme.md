@@ -1,7 +1,9 @@
-````markdown
+
+
 # Démineur de Aiglo (Minesweeper)
 
 Un jeu de démineur moderne et interactif développé en JavaScript vanilla avec une interface utilisateur élégante et responsive.
+
 
 ## 🎮 [Jouer en ligne](https://aiglooo.github.io/AigloDemineur/)
 
@@ -66,7 +68,6 @@ Un jeu de démineur moderne et interactif développé en JavaScript vanilla avec
 ```bash
 git clone https://github.com/Aiglooo/AigloDemineur.git
 ```
-````
 
 2. Ouvrez `index.html` dans votre navigateur
 
@@ -87,3 +88,6 @@ Développé par [Aiglo](https://github.com/Aiglooo)
 ## 📝 License
 
 MIT License
+
+
+![URL QR Code](https://github.com/user-attachments/assets/51d75d08-98f7-4d1d-8ae0-130ad89f0758)
