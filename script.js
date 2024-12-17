@@ -28,6 +28,8 @@ class Demineur {
     this.isAIMode = false;
     this.isGameOver = false;
     this.flagMode = false;
+    this.flagCount = 0;
+    this.remainingMines = 0;
 
     this.initializeEventListeners();
     this.startNewGame();
@@ -149,7 +151,18 @@ class Demineur {
     this.board = [];
     this.gameStarted = false;
 
-    this.gameBoard.style.gridTemplateColumns = `repeat(${this.width}, 40px)`;
+    const cellSize = 40;
+    const maxBoardWidth = Math.min(800, window.innerWidth - 40);
+    const calculatedCellSize = Math.min(
+      cellSize,
+      Math.floor(maxBoardWidth / this.width)
+    );
+
+    this.gameBoard.style.display = "grid";
+    this.gameBoard.style.gridTemplateColumns = `repeat(${this.width}, ${calculatedCellSize}px)`;
+    this.gameBoard.style.gap = "2px";
+    this.gameBoard.style.padding = "10px";
+    this.gameBoard.style.justifyContent = "center";
     this.gameBoard.innerHTML = "";
     this.mineCountDisplay.textContent = `💣 ${this.mineCount}`;
 
@@ -167,6 +180,8 @@ class Demineur {
         cell.className = "cell";
         cell.dataset.x = x;
         cell.dataset.y = y;
+        cell.style.width = `${calculatedCellSize}px`;
+        cell.style.height = `${calculatedCellSize}px`;
 
         cell.addEventListener("click", () => this.handleCellClick(x, y));
         cell.addEventListener("contextmenu", (e) => {
@@ -177,22 +192,48 @@ class Demineur {
         this.gameBoard.appendChild(cell);
       }
     }
+
+    this.flagCount = 0;
+    this.remainingMines = settings.mines;
+    this.updateCounters();
+  }
+
+  updateCounters() {
+    this.mineCountDisplay.textContent = `💣 ${this.mineCount}`;
+    document.querySelector("#flagCount").textContent = `🚩 ${this.flagCount}`;
+    document.querySelector(
+      "#remainingMines"
+    ).textContent = `💭 ${this.remainingMines}`;
   }
 
   startTimer() {
-    this.timerInterval = setInterval(() => {
-      this.timer++;
-      this.timerDisplay.textContent = `⏱️ ${this.timer}`;
-    }, 1000);
+    if (this.timerDisplay) {
+      this.timerInterval = setInterval(() => {
+        this.timer++;
+        this.timerDisplay.textContent = `⏱️ ${this.timer}`;
+      }, 1000);
+    }
   }
 
   placeMines(firstX, firstY) {
     let minesPlaced = 0;
+
+    const safeZone = new Set();
+    for (let dy = -2; dy <= 2; dy++) {
+      for (let dx = -2; dx <= 2; dx++) {
+        const newX = firstX + dx;
+        const newY = firstY + dy;
+        if (newX >= 0 && newX < this.width && newY >= 0 && newY < this.height) {
+          safeZone.add(`${newX},${newY}`);
+        }
+      }
+    }
+
     while (minesPlaced < this.mineCount) {
       const x = Math.floor(Math.random() * this.width);
       const y = Math.floor(Math.random() * this.height);
 
-      if (!this.board[y][x].isMine && !(x === firstX && y === firstY)) {
+      if (!this.board[y][x].isMine && !safeZone.has(`${x},${y}`)) {
         this.board[y][x].isMine = true;
         minesPlaced++;
       }
@@ -260,8 +301,17 @@ class Demineur {
 
     const cell = this.board[y][x];
     if (!cell.isRevealed) {
-      cell.isFlagged = !cell.isFlagged;
+      if (cell.isFlagged) {
+        cell.isFlagged = false;
+        this.flagCount--;
+        this.remainingMines++;
+      } else {
+        cell.isFlagged = true;
+        this.flagCount++;
+        this.remainingMines--;
+      }
       this.updateCell(x, y);
+      this.updateCounters();
 
       if (this.checkWin()) {
         this.endGame(true);
@@ -402,7 +452,9 @@ class Demineur {
 
     clearInterval(this.timerInterval);
     this.timer = 0;
-    this.timerDisplay.textContent = `⏱️ ${this.timer}`;
+    if (this.timerDisplay) {
+      this.timerDisplay.textContent = `⏱️ ${this.timer}`;
+    }
     this.gameStarted = false;
   }
 
