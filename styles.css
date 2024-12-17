@@ -854,41 +854,51 @@ body {
     right: 30px;
     background: linear-gradient(135deg, #6c5ce7 0%, #a8a4e6 100%);
     color: white;
-    padding: 20px;
-    border-radius: 16px;
+    padding: 25px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     box-shadow:
         0 10px 30px rgba(108, 92, 231, 0.2),
         0 1px 5px rgba(108, 92, 231, 0.1);
     transform: translateX(120%);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 1000;
     max-width: 400px;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
 
     &.show {
         transform: translateX(0);
     }
 
     .achievementIcon {
-        font-size: 2.5em;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 10px;
-        border-radius: 12px;
+        font-size: 2.8em;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
     }
 
     .achievementInfo {
         h3 {
             margin: 0;
-            font-size: 1.2em;
-            font-weight: 600;
+            font-size: 1.3em;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         p {
-            margin: 5px 0 0;
-            font-size: 0.95em;
+            margin: 8px 0 0;
+            font-size: 1em;
             opacity: 0.9;
+            line-height: 1.4;
         }
     }
 
@@ -898,16 +908,40 @@ body {
 
         .achievementIcon {
             background: rgba(108, 92, 231, 0.2);
+            animation: pulse 2s infinite;
         }
     }
 }
 
-@keyframes achievementShine {
+@keyframes pulse {
     0% {
-        background-position: -100% 0;
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
     }
 
     100% {
-        background-position: 200% 0;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .achievementPopup {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        padding: 20px;
+        max-width: none;
+
+        .achievementIcon {
+            font-size: 2.2em;
+            padding: 12px;
+        }
+
+        .achievementInfo h3 {
+            font-size: 1.1em;
+        }
     }
 }

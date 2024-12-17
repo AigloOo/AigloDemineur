@@ -95,22 +95,21 @@ class GameStats {
     }
 
     return {
-      firstWin: { unlocked: false, name: "Première Victoire", icon: "🎉" },
+      firstWin: {
+        unlocked: false,
+        name: "Premier Pas",
+        icon: "🎉",
+        description: "Remporter votre première partie",
+      },
       speedRunner: {
         unlocked: false,
         name: "Speed Runner",
         icon: "⚡",
         description: "Gagner une partie en moins de 30 secondes",
       },
-      veteran: {
-        unlocked: false,
-        name: "Vétéran",
-        icon: "🎖️",
-        description: "Jouer 100 parties",
-      },
       masterMiner: {
         unlocked: false,
-        name: "Maître Démineur",
+        name: "Expert Démineur",
         icon: "👑",
         description: "Gagner en mode difficile",
       },
@@ -120,11 +119,11 @@ class GameStats {
         icon: "🌟",
         description: "Gagner 5 parties d'affilée",
       },
-      allRounder: {
+      centuryClub: {
         unlocked: false,
-        name: "Polyvalent",
-        icon: "🎯",
-        description: "Gagner sur tous les niveaux de difficulté",
+        name: "Club des 100",
+        icon: "🏆",
+        description: "Jouer 100 parties",
       },
       flagMaster: {
         unlocked: false,
@@ -132,31 +131,25 @@ class GameStats {
         icon: "🚩",
         description: "Placer 50 drapeaux correctement",
       },
-      quickWin: {
+      secretNinja: {
         unlocked: false,
-        name: "Éclair",
-        icon: "⚡",
-        description: "Gagner en moins de 10 secondes en mode facile",
-      },
-      secretSpeed: {
-        unlocked: false,
-        name: "Vitesse Secrète",
-        icon: "🌪️",
-        description: "Secret: Gagner en moins de 5 secondes",
+        name: "Ninja Silencieux",
+        icon: "🥷",
+        description: "Gagner sans placer un seul drapeau",
         isSecret: true,
       },
       secretNight: {
         unlocked: false,
         name: "Joueur Nocturne",
         icon: "🌙",
-        description: "Secret: Jouer entre 2h et 4h du matin",
+        description: "Jouer entre minuit et 4h du matin",
         isSecret: true,
       },
       secretLucky: {
         unlocked: false,
         name: "Chanceux",
         icon: "🍀",
-        description: "Secret: Gagner sans révéler de chiffre",
+        description: "Gagner en moins de 10 clics",
         isSecret: true,
       },
     };
