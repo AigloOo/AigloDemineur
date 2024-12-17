@@ -855,3 +855,15 @@ class DemineurAI {
 document.addEventListener("DOMContentLoaded", () => {
   new Demineur();
 });
+
+const flagMode = document.getElementById('flagMode');
+    let borderVisible = false;
+
+    flagMode.addEventListener('click', () => {
+      borderVisible = !borderVisible; 
+      if (borderVisible) {
+        flagMode.style.border = '3px solid yellow';
+      } else {
+        flagMode.style.border = 'none'; 
+      }
+    });
