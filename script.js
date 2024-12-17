@@ -1,5 +1,9 @@
 class Demineur {
   constructor() {
+    if (!window.gameStats) {
+      window.gameStats = new GameStats();
+    }
+    this.gameStats = window.gameStats;
     this.loadUserPreferences();
     this.difficultySettings = {
       facile: { width: 8, height: 8, mines: 10 },
@@ -856,14 +860,14 @@ document.addEventListener("DOMContentLoaded", () => {
   new Demineur();
 });
 
-const flagMode = document.getElementById('flagMode');
-    let borderVisible = false;
+const flagMode = document.getElementById("flagMode");
+let borderVisible = false;
 
-    flagMode.addEventListener('click', () => {
-      borderVisible = !borderVisible; 
-      if (borderVisible) {
-        flagMode.style.border = '3px solid yellow';
-      } else {
-        flagMode.style.border = 'none'; 
-      }
-    });
+flagMode.addEventListener("click", () => {
+  borderVisible = !borderVisible;
+  if (borderVisible) {
+    flagMode.style.border = "3px solid yellow";
+  } else {
+    flagMode.style.border = "none";
+  }
+});
